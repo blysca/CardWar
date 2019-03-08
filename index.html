@@ -2,79 +2,45 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>War Card</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link href="https://unpkg.com/basscss@7.1.1/css/basscss.min.css" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link href="https://unpkg.com/basscss@7.1.1/css/basscss.min.css" rel="stylesheet" />
+  <link href="./style.css" rel="stylesheet" />
 </head>
 
-<body>
+<body class="p2">
   <main id="wrapper">
-    <section id="start"></section>
-    <section id="message"></section>
-    <section id="board">
-      <div id="player1" class="players">
-        <div class="score"></div>
-        <div class="hand"></div>
+    <section id="message" class="bold h3 p1 mb2 center white bg-blue rounded">Click Fight to Start Game</section>
+    <section id="board" class="container">
+      <div class="clearfix">
+        <div id="player1" class="players col col-12 sm-col-5 mb3">
+          <div class="h2">Score: <span class="score"></span></div>
+          <div class="hand"></div>
+        </div>
+        <div class="col col-12 sm-col-2">&nbsp;</div>
+        <div id="player2" class="players col col-12 sm-col-5 mb3">
+          <div class="h2">Score: <span class="score"></span></div>
+          <div class="hand"></div>
+        </div>
+        <footer id="action" class="col col-12">
+          <button id="btnBattle" class="btn btn-primary bg-blue" type="button">
+            Battle
+          </button>
+          <button id="btnBattle10" class="btn btn-primary white mx2 bg-navy" type="button">
+            10 Rounds
+          </button>
+        </footer>
       </div>
-      <div id="player2" class="players">
-        <div class="score"></div>
-        <div class="hand"></div>
-      </div>
-      <footer id="action">
-        <button id="btnBattle" class="btn btn-primary bg-navy" type="button">Battle</button>
-      </footer>
     </section>
   </main>
 
-  <script>
-    const suits = ['spades', 'hearts', 'clubs', 'diams'],
-      cardFace = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'],
-      fightButton = document.getElementById('btnBattle');
-
-    let cards = [],
-      players = [
-        [],
-        []
-      ],
-      firstRun = true;
-
-    // event listeners
-    fightButton.addEventListener('click', battle);
-
-    // event functions 
-    function battle() {
-      if (firstRun) {
-        firstRun = false;
-        buildCards();
-      }
-    }
-
-    // functions
-    function buildCards() {
-      cards = [];
-      for (s in suits) {
-        let suitNew = suits[s][0].toUpperCase();
-        console.log(suitNew);
-        for (n in cardFace) {
-          let card = {
-            suit: suits[s],
-            num: cardFace[n],
-            cardValue: parseInt(n) + 2,
-            icon: suitNew
-          };
-
-          cards.push(card);
-        }
-      }
-      console.log(cards);
-    }
-  </script>
+  <script src="./index.js"></script>
 </body>
 
 </html>
